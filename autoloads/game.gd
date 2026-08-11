@@ -41,6 +41,7 @@ func _ready() -> void:
 	_initial_window_scale_aspect = get_window().content_scale_aspect
 	
 	get_window().size_changed.connect(_handle_size_changed)
+	_is_window_small = get_window().size.x < 1280 or get_window().size.y < 720
 	_update_window_scale()
 	get_tree().node_added.connect(_handle_node_added)
 	
