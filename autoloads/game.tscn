@@ -14,11 +14,16 @@ script = ExtResource("2_xaonh")
 name = "Test 2"
 metadata/_custom_type_script = "uid://bnqpng0o60r43"
 
+[sub_resource type="Resource" id="Resource_g4v7s"]
+script = ExtResource("2_xaonh")
+name = "Test 3"
+metadata/_custom_type_script = "uid://bnqpng0o60r43"
+
 [node name="Game" type="Node" unique_id=369504755]
 script = ExtResource("1_fmbhi")
 multiplayer_test = true
 all_roles = false
-test_players = Array[ExtResource("2_xaonh")]([SubResource("Resource_hihc8"), SubResource("Resource_du0e2")])
+test_players = Array[ExtResource("2_xaonh")]([SubResource("Resource_hihc8"), SubResource("Resource_du0e2"), SubResource("Resource_g4v7s")])
 main_scene = ExtResource("3_du0e2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1737081465]
