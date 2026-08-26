@@ -5,7 +5,7 @@ extends Node3D
 @onready var players: Node3D = $Players
 
 func _ready() -> void:
-	for i: int in Game.players.size():
+	for i: int in Game.instance.players.size():
 		var player_data: Statics.PlayerData = Game.players[i]
 		var player_inst = player_scene.instantiate()
 		player_inst.name = str(player_data.id)
