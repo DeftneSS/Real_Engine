@@ -1,4 +1,3 @@
-class_name Game
 extends Node
 
 signal players_updated

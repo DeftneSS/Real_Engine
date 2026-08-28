@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://itg32ygcx6nc"]
+
+[ext_resource type="Script" uid="uid://bqy2hlpq16utr" path="res://players/player.gd" id="1_l271l"]
+[ext_resource type="PackedScene" uid="uid://c4ydhc8tdeu62" path="res://input_synchronizer.tscn" id="2_i6aj8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iwpo4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bu0v1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(0.41937256, 0.14294434, 0.84033203)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i6aj8"]
+properties/0/path = NodePath("Model:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D" unique_id=1611180337]
+script = ExtResource("1_l271l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=525107169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4563465, 0)
+shape = SubResource("CapsuleShape3D_iwpo4")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=915895812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6557393, 0)
+billboard = 1
+text = "Player 1"
+
+[node name="InputSynchronizer" parent="." unique_id=1846375910 instance=ExtResource("2_i6aj8")]
+
+[node name="SyncTimer" type="Timer" parent="." unique_id=1686214178]
+wait_time = 0.1
+
+[node name="Model" type="Node3D" parent="." unique_id=1638909321]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=2008098503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4413216, 0)
+mesh = SubResource("CapsuleMesh_bu0v1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/MeshInstance3D" unique_id=1559359979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5815146, -0.30548984)
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=810192007]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=1478529418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.07, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=936902903]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=332628892]
+replication_config = SubResource("SceneReplicationConfig_i6aj8")
