@@ -53,3 +53,14 @@ spring_length = 3.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=332628892]
 replication_config = SubResource("SceneReplicationConfig_i6aj8")
+
+[node name="DashTimer" type="Timer" parent="." unique_id=1534139603]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="." unique_id=1866610757]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
