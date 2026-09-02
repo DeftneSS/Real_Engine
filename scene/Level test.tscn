@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_e7s2s"]
 [ext_resource type="Script" uid="uid://bdlvueh6n00lr" path="res://scene/level_test.gd" id="1_s2pad"]
 [ext_resource type="PackedScene" uid="uid://itg32ygcx6nc" path="res://players/player.tscn" id="2_2tnkg"]
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="3_enemy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e7s2s"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -26,6 +27,7 @@ albedo_texture = ExtResource("1_e7s2s")
 [node name="Level1" type="Node3D" unique_id=1612030300]
 script = ExtResource("1_s2pad")
 player_scene = ExtResource("2_2tnkg")
+enemy_scene = ExtResource("3_enemy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=836779784]
 environment = SubResource("Environment_2tnkg")
@@ -57,3 +59,17 @@ transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, 0.10755205, 0.424692
 transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -2.9540184, 0.42469287, 1.5206842)
 
 [node name="Players" type="Node3D" parent="." unique_id=165699269]
+
+[node name="EnemySpawnPoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, 6, 0.42469287, 1.5206842)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -6, 0.42469287, 1.5206842)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Enemies"]
+spawn_path = NodePath("..")
+_spawnable_scenes = PackedStringArray("res://enemies/enemy.tscn")

@@ -40,6 +40,7 @@ func setup(player_data: Statics.PlayerData) -> void:
 	set_multiplayer_authority(player_data.id)
 	camera_3d.current = is_multiplayer_authority()
 	sync_timer.start()
+	add_to_group("players")
 
 
 @rpc("call_local")
