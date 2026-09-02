@@ -1,0 +1,31 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" uid="uid://07402eu6m4mk" path="res://assets/tilesets/grass_dirt/grass_dirt_full.fbx" id="1_full"]
+[ext_resource type="PackedScene" uid="uid://bgvqc6tkevfqm" path="res://assets/tilesets/grass_dirt/grass_dirt_corner_1.fbx" id="2_cor1"]
+[ext_resource type="PackedScene" uid="uid://bm2kea5x1aoi7" path="res://assets/tilesets/grass_dirt/grass_dirt_corner_2.fbx" id="3_cor2"]
+[ext_resource type="PackedScene" uid="uid://dmqiymwuf1yc" path="res://assets/tilesets/grass_dirt/grass_dirt_corner_3.fbx" id="4_cor3"]
+[ext_resource type="PackedScene" uid="uid://ssqab2srm18y" path="res://assets/tilesets/grass_dirt/grass_dirt_corner_4.fbx" id="5_cor4"]
+[ext_resource type="PackedScene" uid="uid://df5tiislpkxjr" path="res://assets/tilesets/grass_dirt/grass_dirt_edge_1.fbx" id="6_edg1"]
+[ext_resource type="PackedScene" uid="uid://i0ge8521fvt5" path="res://assets/tilesets/grass_dirt/grass_dirt_edge_2.fbx" id="7_edg2"]
+[ext_resource type="PackedScene" uid="uid://dex2lnhyaweqf" path="res://assets/tilesets/grass_dirt/grass_dirt_edge_3.fbx" id="8_edg3"]
+[ext_resource type="PackedScene" uid="uid://dhgj6mrtp71b8" path="res://assets/tilesets/grass_dirt/grass_dirt_edge_4.fbx" id="9_edg4"]
+
+[node name="GrassDirtLibrary" type="Node3D"]
+
+[node name="full" parent="." instance=ExtResource("1_full")]
+
+[node name="corner_1" parent="." instance=ExtResource("2_cor1")]
+
+[node name="corner_2" parent="." instance=ExtResource("3_cor2")]
+
+[node name="corner_3" parent="." instance=ExtResource("4_cor3")]
+
+[node name="corner_4" parent="." instance=ExtResource("5_cor4")]
+
+[node name="edge_1" parent="." instance=ExtResource("6_edg1")]
+
+[node name="edge_2" parent="." instance=ExtResource("7_edg2")]
+
+[node name="edge_3" parent="." instance=ExtResource("8_edg3")]
+
+[node name="edge_4" parent="." instance=ExtResource("9_edg4")]
