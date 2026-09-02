@@ -54,6 +54,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		model.rotation.y = lerp_angle(model.rotation.y, camera_pivot.rotation.y, 1)
 
 
+func setup(player_data: Statics.PlayerData) -> void:
+	label_3d.text = player_data.name
+	set_multiplayer_authority(player_data.id)
+	camera_3d.current = is_multiplayer_authority()
+	sync_timer.start()
+	add_to_group("players")
+
+
 @rpc("call_local")
 func test() -> void:
 	var current_player: String = Game.get_current_player().name
