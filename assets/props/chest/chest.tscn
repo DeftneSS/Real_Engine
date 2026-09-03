@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bul3q0prd3gde" path="res://assets/props/chest/chest_sheet.png" id="1_sheet"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chest"]
+size = Vector3(0.7, 0.42, 0.5)
+
+[node name="Chest" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 0
+offset = Vector2(0, 9.5)
+pixel_size = 0.022
+billboard = 2
+alpha_cut = 1
+texture = ExtResource("1_sheet")
+region_enabled = true
+region_rect = Rect2(8, 261, 32, 19)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
+shape = SubResource("BoxShape3D_chest")
