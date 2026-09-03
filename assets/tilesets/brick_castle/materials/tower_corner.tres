@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://cmlwhb4qnv2jn" path="res://assets/tilesets/brick_castle/textures/tower_corner.png" id="1_tex"]
+
+[resource]
+resource_name = "tower_corner"
+albedo_texture = ExtResource("1_tex")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bei74lbuh7b5x" path="res://assets/tilesets/brick_castle/castle_wall.fbx" id="1_wall"]
+[ext_resource type="PackedScene" uid="uid://wq5eu1bs5xan" path="res://assets/tilesets/brick_castle/castle_wall_window.fbx" id="2_wall_window"]
+[ext_resource type="PackedScene" uid="uid://b54t2i2yw1bdd" path="res://assets/tilesets/brick_castle/castle_wall_corner.fbx" id="3_wall_corner"]
+[ext_resource type="PackedScene" uid="uid://1xqn1nlk38fe" path="res://assets/tilesets/brick_castle/castle_entrance.fbx" id="4_entrance"]
+[ext_resource type="PackedScene" uid="uid://ck87jbogu1src" path="res://assets/tilesets/brick_castle/castle_tower_corner.fbx" id="5_tower_corner"]
+[ext_resource type="PackedScene" uid="uid://da1x2sre1k7e0" path="res://assets/tilesets/brick_castle/castle_tower_short.fbx" id="6_tower_short"]
+[ext_resource type="PackedScene" uid="uid://geik386cg5cn" path="res://assets/tilesets/brick_castle/castle_tower_tall.fbx" id="7_tower_tall"]
+[ext_resource type="PackedScene" uid="uid://dcal1ax2lvhgi" path="res://assets/tilesets/brick_castle/castle_tower_tall_roof.fbx" id="8_tower_tall_roof"]
+[ext_resource type="PackedScene" uid="uid://crq0vgq0is8ba" path="res://assets/tilesets/brick_castle/castle_keep_segment.fbx" id="9_keep_segment"]
+[ext_resource type="PackedScene" uid="uid://62qacg55ofvi" path="res://assets/tilesets/brick_castle/castle_keep_floor.fbx" id="10_keep_floor"]
+[ext_resource type="PackedScene" uid="uid://d1vquf7hvqty7" path="res://assets/tilesets/brick_castle/castle_keep_roof.fbx" id="11_keep_roof"]
+[ext_resource type="PackedScene" uid="uid://cbxx0x1wk6dgj" path="res://assets/tilesets/brick_castle/castle_stairs.fbx" id="12_stairs"]
+[ext_resource type="PackedScene" uid="uid://bex1edaam7sqw" path="res://assets/tilesets/brick_castle/castle_ladder_3m.fbx" id="13_ladder_3m"]
+[ext_resource type="PackedScene" uid="uid://d14lt26tbe6kx" path="res://assets/tilesets/brick_castle/castle_ladder_1m.fbx" id="14_ladder_1m"]
+[ext_resource type="PackedScene" uid="uid://i3wa5y5lpyt3" path="res://assets/tilesets/brick_castle/castle_pillar.fbx" id="15_pillar"]
+[ext_resource type="PackedScene" uid="uid://bkhlchmrs8bat" path="res://assets/tilesets/brick_castle/castle_pillar_broken.fbx" id="16_pillar_broken"]
+[ext_resource type="PackedScene" uid="uid://b12jfeglyy6al" path="res://assets/tilesets/brick_castle/castle_fountain.fbx" id="17_fountain"]
+
+[node name="BrickCastleLibrary" type="Node3D"]
+
+[node name="wall" parent="." instance=ExtResource("1_wall")]
+
+[node name="wall_window" parent="." instance=ExtResource("2_wall_window")]
+
+[node name="wall_corner" parent="." instance=ExtResource("3_wall_corner")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.0, 0.251)
+
+[node name="entrance" parent="." instance=ExtResource("4_entrance")]
+
+[node name="tower_corner" parent="." instance=ExtResource("5_tower_corner")]
+
+[node name="tower_short" parent="." instance=ExtResource("6_tower_short")]
+
+[node name="tower_tall" parent="." instance=ExtResource("7_tower_tall")]
+
+[node name="tower_tall_roof" parent="." instance=ExtResource("8_tower_tall_roof")]
+
+[node name="keep_segment" parent="." instance=ExtResource("9_keep_segment")]
+
+[node name="keep_floor" parent="." instance=ExtResource("10_keep_floor")]
+
+[node name="keep_roof" parent="." instance=ExtResource("11_keep_roof")]
+
+[node name="stairs" parent="." instance=ExtResource("12_stairs")]
+
+[node name="ladder_3m" parent="." instance=ExtResource("13_ladder_3m")]
+
+[node name="ladder_1m" parent="." instance=ExtResource("14_ladder_1m")]
+
+[node name="pillar" parent="." instance=ExtResource("15_pillar")]
+
+[node name="pillar_broken" parent="." instance=ExtResource("16_pillar_broken")]
+
+[node name="fountain" parent="." instance=ExtResource("17_fountain")]
