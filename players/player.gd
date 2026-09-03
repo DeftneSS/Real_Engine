@@ -37,6 +37,7 @@ func _ready() -> void:
 	camera_3d.current = is_multiplayer_authority()
 	if is_multiplayer_authority():
 		sync_timer.start()
+	add_to_group("players")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):
@@ -52,14 +53,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera_pivot.rotation.x - mouse_motion.relative.y * mouse_sensitivity,
 			deg_to_rad(camera_min_pitch), deg_to_rad(camera_max_pitch))
 		model.rotation.y = lerp_angle(model.rotation.y, camera_pivot.rotation.y, 1)
-
-
-func setup(player_data: Statics.PlayerData) -> void:
-	label_3d.text = player_data.name
-	set_multiplayer_authority(player_data.id)
-	camera_3d.current = is_multiplayer_authority()
-	sync_timer.start()
-	add_to_group("players")
 
 
 @rpc("call_local")
