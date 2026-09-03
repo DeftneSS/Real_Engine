@@ -37,6 +37,7 @@ func _ready() -> void:
 	camera_3d.current = is_multiplayer_authority()
 	if is_multiplayer_authority():
 		sync_timer.start()
+	add_to_group("players")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):
