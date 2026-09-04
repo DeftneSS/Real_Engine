@@ -5,3 +5,7 @@
 [node name="Unarmed" type="Node3D" unique_id=1081921970]
 script = ExtResource("1_82lhf")
 metadata/_custom_type_script = "uid://db7x4y67ebr2g"
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

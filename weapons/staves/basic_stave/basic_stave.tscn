@@ -22,3 +22,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9877622, 0)
 
 [node name="ProjectileSpawner" type="MultiplayerSpawner" parent="." unique_id=248477043]
 spawn_path = NodePath("../Projectiles")
+_spawnable_scenes = PackedStringArray("res://weapons/staves/projectile.tscn")
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

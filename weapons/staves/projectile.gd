@@ -1,5 +1,5 @@
 class_name Projectile
-extends CollisionObject3D
+extends Node3D
 
 @export var damage: int = 0
 @export var max_distance: float = 100.0

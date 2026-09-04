@@ -42,6 +42,7 @@ func _ready() -> void:
 	add_to_group("players")
 	
 	_weapon = basic_stave_scene.instantiate()
+	add_child(_weapon)
 
 
 	
@@ -100,6 +101,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dash_direction.z * dash_speed
 	else:
 		if input_synchronizer.attack:
+			input_synchronizer.attack = false
 			attack()
 		
 		var target: Vector2 = Vector2(direction.x, direction.z) * move_speed
