@@ -1,9 +1,9 @@
 class_name BasicStave
 extends Weapon
 
-@onready var projectile_spawn_point: Marker3D = $ProjectileSpawnPoint
+@onready var orb: MeshInstance3D = $Orb
 @onready var projectile_scene: PackedScene = preload("res://weapons/staves/projectile.tscn")
-@onready var projectiles: Node3D = $Projectiles
+@onready var projectile_spawner: MultiplayerSpawner = $ProjectileSpawner
 
 @export var projectile_speed: float = 10.0
 
@@ -16,5 +16,5 @@ func _attack(_aim_direction: Vector3) -> void:
 	projectile.damage = damage
 	projectile.speed = projectile_speed
 	projectile.direction = _aim_direction
-	projectiles.add_child(projectile)
-	projectile.global_position = projectile_spawn_point.global_position
+	projectile_spawner.add_child(projectile)
+	projectile.global_position = orb.global_position

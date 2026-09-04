@@ -2,7 +2,7 @@ class_name Projectile
 extends Node3D
 
 @export var damage: int = 0
-@export var max_distance: float = 100.0
+@export var max_distance: float = 80.0
 @export var direction: Vector3 = Vector3.FORWARD.normalized()
 @export var speed: float = 1.0
 

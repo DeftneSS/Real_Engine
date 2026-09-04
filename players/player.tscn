@@ -43,6 +43,9 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5815146, -0.30548984)
 mesh = SubResource("BoxMesh_g4v7s")
 
+[node name="WeaponSocket" type="Node3D" parent="Model" unique_id=503912343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81620765, 1.4413216, 0)
+
 [node name="CameraPivot" type="Node3D" parent="." unique_id=810192007]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=1478529418]

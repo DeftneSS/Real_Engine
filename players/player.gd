@@ -12,6 +12,8 @@ extends CharacterBody3D
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 
+@onready var weapon_socket: Node3D = $Model/WeaponSocket
+
 @onready var basic_stave_scene: PackedScene = preload("res://weapons/staves/basic_stave/basic_stave.tscn")
 
 @export var move_speed: float = 5
@@ -42,7 +44,7 @@ func _ready() -> void:
 	add_to_group("players")
 	
 	_weapon = basic_stave_scene.instantiate()
-	add_child(_weapon)
+	weapon_socket.add_child(_weapon)
 
 
 	
