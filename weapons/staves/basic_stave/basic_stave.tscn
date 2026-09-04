@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://8mbbg4oewaeq"]
+
+[ext_resource type="Script" uid="uid://lg2ynmqianp0" path="res://weapons/staves/basic_stave/basic_stave.gd" id="1_ug5yx"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0tkti"]
+
+[sub_resource type="Skin" id="Skin_x52no"]
+
+[node name="BasicStave" type="Node3D" unique_id=931293759]
+script = ExtResource("1_ug5yx")
+metadata/_custom_type_script = "uid://db7x4y67ebr2g"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1945797211]
+transform = Transform3D(0.2, 0, 0, 0, 2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("CylinderMesh_0tkti")
+skin = SubResource("Skin_x52no")
+
+[node name="ProjectileSpawnPoint" type="Marker3D" parent="." unique_id=370686124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9877622, 0)
+
+[node name="Projectiles" type="Node3D" parent="." unique_id=1519526192]
+
+[node name="ProjectileSpawner" type="MultiplayerSpawner" parent="." unique_id=248477043]
+spawn_path = NodePath("../Projectiles")

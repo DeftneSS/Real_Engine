@@ -2,6 +2,18 @@ class_name Player
 
 extends CharacterBody3D
 
+@onready var label_3d: Label3D = $Label3D
+@onready var input_synchronizer: InputSynchronizer = $InputSynchronizer
+@onready var sync_timer: Timer = $SyncTimer
+@onready var model: Node3D = $Model
+@onready var camera_pivot: Node3D = $CameraPivot
+@onready var spring_arm_3d: SpringArm3D = $CameraPivot/SpringArm3D
+@onready var camera_3d: Camera3D = $CameraPivot/SpringArm3D/Camera3D
+@onready var dash_timer: Timer = $DashTimer
+@onready var dash_cooldown_timer: Timer = $DashCooldownTimer
+
+@onready var basic_stave_scene: PackedScene = preload("res://weapons/staves/basic_stave/basic_stave.tscn")
+
 @export var move_speed: float = 5
 @export var jump_speed: float = 7
 
@@ -16,17 +28,7 @@ extends CharacterBody3D
 @export var camera_min_pitch: float = -20
 @export var camera_max_pitch: float = 30
 
-
-@onready var label_3d: Label3D = $Label3D
-@onready var input_synchronizer: InputSynchronizer = $InputSynchronizer
-@onready var sync_timer: Timer = $SyncTimer
-@onready var model: Node3D = $Model
-@onready var camera_pivot: Node3D = $CameraPivot
-@onready var spring_arm_3d: SpringArm3D = $CameraPivot/SpringArm3D
-@onready var camera_3d: Camera3D = $CameraPivot/SpringArm3D/Camera3D
-@onready var dash_timer: Timer = $DashTimer
-@onready var dash_cooldown_timer: Timer = $DashCooldownTimer
-
+var _weapon: Weapon
 
 func _ready() -> void:
 	sync_timer.timeout.connect(_on_sync_timeout)
@@ -38,11 +40,11 @@ func _ready() -> void:
 	if is_multiplayer_authority():
 		sync_timer.start()
 	add_to_group("players")
+	
+	_weapon = basic_stave_scene.instantiate()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test"):
-		test.rpc()
 
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
@@ -55,15 +57,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		model.rotation.y = lerp_angle(model.rotation.y, camera_pivot.rotation.y, 1)
 
 
+
+func setup(player_data: Statics.PlayerData) -> void:
+	label_3d.text = player_data.name
+	set_multiplayer_authority(player_data.id)
+	camera_3d.current = is_multiplayer_authority()
+	sync_timer.start()
+	
+
 @rpc("call_local")
 func test() -> void:
 	var current_player: String = Game.get_current_player().name
 	Debug.log(current_player, 10)
-	
 
 
 func _physics_process(delta: float) -> void:
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
@@ -73,7 +81,6 @@ func _physics_process(delta: float) -> void:
 		input_synchronizer.jump = false
 	
 	var move_input: Vector2 = input_synchronizer.move_input
-	
 	var direction: Vector3 = model.transform.basis * Vector3(move_input.x, 0, move_input.y)
 	
 	if input_synchronizer.dash:
@@ -87,11 +94,14 @@ func _physics_process(delta: float) -> void:
 			can_dash = false
 			dash_timer.start()
 			dash_cooldown_timer.start()
-		
+	
 	if is_dashing:
 		velocity.x = dash_direction.x * dash_speed
 		velocity.z = dash_direction.z * dash_speed
 	else:
+		if input_synchronizer.attack:
+			attack()
+		
 		var target: Vector2 = Vector2(direction.x, direction.z) * move_speed
 		var current_speed: Vector2 = Vector2(velocity.x, velocity.z)
 		var decel: float = acceleration
@@ -104,8 +114,11 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	
-	
+
+func attack() -> void:
+	var direction: Vector3 = -camera_3d.global_transform.basis.z
+	_weapon.attack(direction)
+
 func _on_sync_timeout() -> void:
 	_sync.rpc(global_position, velocity)
 	
