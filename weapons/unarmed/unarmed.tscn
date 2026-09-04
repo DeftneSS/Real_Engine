@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bgmhfcm2c0n4w"]
+
+[ext_resource type="Script" uid="uid://c1wwh8vxr71p8" path="res://weapons/unarmed/unarmed.gd" id="1_82lhf"]
+
+[node name="Unarmed" type="Node3D" unique_id=1081921970]
+script = ExtResource("1_82lhf")
+metadata/_custom_type_script = "uid://db7x4y67ebr2g"
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

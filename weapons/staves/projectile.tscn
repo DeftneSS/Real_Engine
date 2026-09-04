@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cb4j87fkrvoof"]
+
+[ext_resource type="Script" uid="uid://bf1g0mx7m1qqv" path="res://weapons/staves/projectile.gd" id="1_15gha"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0tkti"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0tkti"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_15gha"]
+
+[node name="Projectile" type="Node3D" unique_id=1758217118]
+script = ExtResource("1_15gha")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=793358975]
+mesh = SubResource("SphereMesh_0tkti")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1497281512]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=763299941]
+shape = SubResource("SphereShape3D_0tkti")
+
+[node name="ProjectileSpawner" type="MultiplayerSynchronizer" parent="." unique_id=1067952777]
+replication_config = SubResource("SceneReplicationConfig_15gha")
