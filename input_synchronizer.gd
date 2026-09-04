@@ -5,7 +5,7 @@ extends MultiplayerSynchronizer
 @export var move_input: Vector2
 @export var jump: bool
 @export var dash: bool
-
+@export var attack: bool
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
@@ -19,6 +19,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		broadcast_dash.rpc()
 	
+	if Input.is_action_just_pressed("attack"):
+		broadcast_attack.rpc()
+	
 
 @rpc("call_local")
 func broadcast_jump() -> void:
@@ -27,3 +30,7 @@ func broadcast_jump() -> void:
 @rpc("call_local")
 func broadcast_dash() -> void:
 	dash = true
+
+@rpc("call_local")
+func broadcast_attack() -> void:
+	attack = true
