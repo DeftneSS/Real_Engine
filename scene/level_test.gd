@@ -12,7 +12,7 @@ func _ready() -> void:
 	player_spawner.spawn_function = _spawn_player
 	if not multiplayer.is_server():
 		return
-	#await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	for player_data: Statics.PlayerData in Game.instance.players:
 		player_spawner.spawn(player_data.to_dict())
 
