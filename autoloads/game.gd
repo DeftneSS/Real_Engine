@@ -7,10 +7,10 @@ signal vote_updated(id: int)
 static var instance: Game
 
 @export var multiplayer_test: bool = false
-@export var use_roles: bool = true
-@export var unique_roles: bool = true # won't start with repeated roles
-@export var all_roles: bool = true # won't start if all roles aren't selected
-@export var min_players: int = 2 # won't start if there are at least these players
+@export var use_roles: bool = false
+@export var unique_roles: bool = false # won't start with repeated roles
+@export var all_roles: bool = false # won't start if all roles aren't selected
+@export var min_players: int = 3 # won't start if there are at least these players
 @export var fill_screen: bool = true
 @export var test_players: Array[PlayerDataResource] = [] # first one is server
 @export var main_scene: PackedScene
