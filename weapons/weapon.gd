@@ -6,6 +6,8 @@ extends Node3D
 @export var weapon_name: String = "Base Weapon"
 @export var damage: int = 10
 
+## Peer id of the player holding this weapon.
+var wielder_id: int = 1
 var _can_attack: bool = true
 
 func _ready() -> void:

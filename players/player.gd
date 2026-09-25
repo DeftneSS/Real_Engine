@@ -44,6 +44,7 @@ func _ready() -> void:
 	add_to_group("players")
 	
 	_weapon = basic_stave_scene.instantiate()
+	_weapon.wielder_id = player_data.id
 	weapon_socket.add_child(_weapon)
 
 
@@ -120,6 +121,9 @@ func _physics_process(delta: float) -> void:
 	
 
 func attack() -> void:
+	# Only the owner knows the real camera aim; the weapon replicates the result.
+	if not is_multiplayer_authority():
+		return
 	var direction: Vector3 = -camera_3d.global_transform.basis.z
 	_weapon.attack(direction)
 

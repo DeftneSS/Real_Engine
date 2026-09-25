@@ -11,10 +11,30 @@ func _init() -> void:
 	weapon_name = "Basic Stave"
 	damage = 15
 
+func _ready() -> void:
+	super()
+	projectile_spawner.spawn_function = _spawn_projectile
+
+# Runs only on the wielder's peer (see Player.attack).
 func _attack(_aim_direction: Vector3) -> void:
+	_request_projectile.rpc_id(1, orb.global_position, _aim_direction)
+
+@rpc("any_peer", "call_local", "reliable")
+func _request_projectile(origin: Vector3, aim_direction: Vector3) -> void:
+	if multiplayer.get_remote_sender_id() != wielder_id:
+		return
+	projectile_spawner.spawn({
+		"origin": origin,
+		"direction": aim_direction.normalized(),
+		"speed": projectile_speed,
+		"damage": damage,
+	})
+
+func _spawn_projectile(data: Dictionary) -> Node:
 	var projectile: Projectile = projectile_scene.instantiate()
-	projectile.damage = damage
-	projectile.speed = projectile_speed
-	projectile.direction = _aim_direction
-	projectile_spawner.add_child(projectile)
-	projectile.global_position = orb.global_position
+	projectile.damage = data.damage
+	projectile.speed = data.speed
+	projectile.direction = data.direction
+	# The spawner is not a Node3D, so local position is world position.
+	projectile.position = data.origin
+	return projectile
