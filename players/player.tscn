@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bqy2hlpq16utr" path="res://players/player.gd" id="1_l271l"]
 [ext_resource type="PackedScene" uid="uid://c4ydhc8tdeu62" path="res://input_synchronizer.tscn" id="2_i6aj8"]
+[ext_resource type="Script" path="res://components/health_component.gd" id="3_health"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="4_hitbox"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iwpo4"]
 
@@ -9,6 +11,10 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
 size = Vector3(0.41937256, 0.14294434, 0.84033203)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hitbox"]
+radius = 0.6
+height = 2.2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i6aj8"]
 properties/0/path = NodePath("Model:rotation")
@@ -64,6 +70,22 @@ one_shot = true
 [node name="DashCooldownTimer" type="Timer" parent="." unique_id=1866610757]
 wait_time = 3.0
 one_shot = true
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_health")
+max_health = 6
+
+[node name="HitboxComponent" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_hitbox")
+health_component = NodePath("../HealthComponent")
+invulnerability_time = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4563465, 0)
+shape = SubResource("CapsuleShape3D_hitbox")
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

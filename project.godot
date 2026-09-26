@@ -88,6 +88,12 @@ attack={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player_hitbox"
+3d_physics/layer_3="enemy_hitbox"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.1287, 0.24612503, 0.33, 1)

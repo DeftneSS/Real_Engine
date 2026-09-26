@@ -1,10 +1,21 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://components/health_component.gd" id="2_health"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_hitbox"]
+[ext_resource type="Script" path="res://components/contact_damage_component.gd" id="4_contact"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_enemy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_enemy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hitbox"]
+radius = 0.6
+height = 2.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_contact"]
+radius = 0.7
+height = 2.2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_enemy"]
 properties/0/path = NodePath(".:position")
@@ -35,3 +46,29 @@ skeleton = NodePath("../..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_enemy")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 45
+
+[node name="HitboxComponent" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hitbox")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4563465, 0)
+shape = SubResource("CapsuleShape3D_hitbox")
+
+[node name="ContactDamageComponent" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("4_contact")
+damage = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContactDamageComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4563465, 0)
+shape = SubResource("CapsuleShape3D_contact")

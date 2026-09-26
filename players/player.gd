@@ -13,6 +13,9 @@ extends CharacterBody3D
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 
 @onready var weapon_socket: Node3D = $Model/WeaponSocket
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
 
 @onready var basic_stave_scene: PackedScene = preload("res://weapons/staves/basic_stave/basic_stave.tscn")
 
@@ -47,8 +50,33 @@ func _ready() -> void:
 	_weapon.wielder_id = player_data.id
 	weapon_socket.add_child(_weapon)
 
+	health_component.died.connect(_on_died)
+	if is_multiplayer_authority():
+		_create_hud()
 
-	
+
+func _create_hud() -> void:
+	var hud_layer: CanvasLayer = CanvasLayer.new()
+	var hearts: HeartsDisplay = HeartsDisplay.new()
+	hearts.position = Vector2(16, 16)
+	hud_layer.add_child(hearts)
+	add_child(hud_layer)
+	health_component.health_changed.connect(hearts.set_health)
+	hearts.set_health(health_component.current_health, health_component.max_health)
+
+
+# Emitted on every peer (health is broadcast by the server).
+func _on_died() -> void:
+	remove_from_group("players")
+	model.hide()
+	label_3d.hide()
+	set_physics_process(false)
+	collision_shape_3d.set_deferred("disabled", true)
+	hitbox_component.set_deferred("monitorable", false)
+	if multiplayer.is_server():
+		Debug.log("%s died" % label_3d.text)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return

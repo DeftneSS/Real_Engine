@@ -6,10 +6,14 @@ extends CharacterBody3D
 
 @onready var label_3d: Label3D = $Label3D
 @onready var model: Node3D = $Model
+@onready var health_component: HealthComponent = $HealthComponent
 
 
 func _ready() -> void:
 	label_3d.modulate = Color.RED
+	health_component.health_changed.connect(_on_health_changed)
+	health_component.died.connect(_on_died)
+	_on_health_changed(health_component.current_health, health_component.max_health)
 
 
 func _physics_process(delta: float) -> void:
@@ -46,3 +50,13 @@ func _get_nearest_player() -> Node3D:
 			nearest_distance = distance
 			nearest = player
 	return nearest
+
+
+func _on_health_changed(current_health: int, max_health: int) -> void:
+	label_3d.text = "Enemy %d/%d" % [current_health, max_health]
+
+
+func _on_died() -> void:
+	# The Enemies MultiplayerSpawner despawns it on clients.
+	if multiplayer.is_server():
+		queue_free()
