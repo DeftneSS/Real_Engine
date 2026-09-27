@@ -17,7 +17,7 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
-@onready var basic_stave_scene: PackedScene = preload("res://weapons/staves/basic_stave/basic_stave.tscn")
+@onready var basic_stave_scene: PackedScene = preload("res://weapon/stave/basic_stave/basic_stave.tscn")
 
 @export var move_speed: float = 5
 @export var jump_speed: float = 7

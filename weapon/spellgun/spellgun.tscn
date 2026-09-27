@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bc5s23g5spb1d"]
+
+[ext_resource type="Script" uid="uid://db7x4y67ebr2g" path="res://weapon/weapon.gd" id="1_opmya"]
+[ext_resource type="Script" uid="uid://ce0cxakj8fj5o" path="res://weapon/hitscan_attack_component.gd" id="2_hits"]
+
+[node name="Spellgun" type="Node3D" unique_id=21910333 node_paths=PackedStringArray("attack_components")]
+script = ExtResource("1_opmya")
+weapon_name = "Spellgun"
+attack_components = [NodePath("HitscanAttackComponent")]
+metadata/_custom_type_script = "uid://db7x4y67ebr2g"
+
+[node name="HitscanAttackComponent" type="Node3D" parent="."]
+script = ExtResource("2_hits")
+damage = 10
+cooldown = 0.5
+metadata/_custom_type_script = "uid://ce0cxakj8fj5o"
