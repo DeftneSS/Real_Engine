@@ -5,7 +5,6 @@ extends Area3D
 
 @export var damage: int = 1
 
-
 func _physics_process(_delta: float) -> void:
 	if not multiplayer.is_server():
 		return

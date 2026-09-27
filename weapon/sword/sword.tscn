@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://by5cu7s7txka1"]
+
+[ext_resource type="Script" uid="uid://db7x4y67ebr2g" path="res://weapon/weapon.gd" id="1_g0263"]
+[ext_resource type="Script" uid="uid://c0f5dc720ro6y" path="res://weapon/melee_attack_component.gd" id="2_dvccu"]
+
+[node name="Sword" type="Node3D" unique_id=1392134256 node_paths=PackedStringArray("attack_components")]
+script = ExtResource("1_g0263")
+weapon_name = "Sword"
+attack_components = [NodePath("MeleeAttackComponent")]
+metadata/_custom_type_script = "uid://db7x4y67ebr2g"
+
+[node name="MeleeAttackComponent" type="Node3D" parent="." unique_id=472654113]
+script = ExtResource("2_dvccu")
+damage = 10
+metadata/_custom_type_script = "uid://c0f5dc720ro6y"

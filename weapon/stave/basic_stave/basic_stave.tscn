@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://8mbbg4oewaeq"]
+
+[ext_resource type="Script" uid="uid://nnddtt5b6sij" path="res://weapon/projectile_attack_component.gd" id="1_lfdlx"]
+[ext_resource type="PackedScene" uid="uid://dtvqwbtxnckfb" path="res://weapon/stave/basic_stave/basic_projectile.tscn" id="2_proj"]
+
+[sub_resource type="GDScript" id="GDScript_s6k7k"]
+script/source = "extends Weapon
+"
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0tkti"]
+
+[sub_resource type="Skin" id="Skin_x52no"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0tkti"]
+
+[node name="BasicStave" type="Node3D" unique_id=356169310 node_paths=PackedStringArray("attack_components")]
+script = SubResource("GDScript_s6k7k")
+weapon_name = "Basic Stave"
+attack_components = [NodePath("ProjectileAttackComponent")]
+metadata/_custom_type_script = "uid://db7x4y67ebr2g"
+
+[node name="Handle" type="MeshInstance3D" parent="." unique_id=1945797211]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_0tkti")
+skin = SubResource("Skin_x52no")
+
+[node name="ProjectileAttackComponent" type="Node3D" parent="." unique_id=347741228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9999013, 0)
+script = ExtResource("1_lfdlx")
+projectile_scene = ExtResource("2_proj")
+damage = 10
+cooldown = 0.5
+metadata/_custom_type_script = "uid://nnddtt5b6sij"
+
+[node name="Orb" type="MeshInstance3D" parent="ProjectileAttackComponent" unique_id=2059891304]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 9.870529e-05, 0)
+mesh = SubResource("SphereMesh_0tkti")
+skeleton = NodePath("../..")
