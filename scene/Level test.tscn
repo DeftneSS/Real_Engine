@@ -6,18 +6,24 @@
 [ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="3_enemy"]
 [ext_resource type="MeshLibrary" uid="uid://ckdw5dhqvv7pj" path="res://assets/tilesets/brick_castle/brick_castle_library.tres" id="5_1mjsb"]
 [ext_resource type="PackedScene" path="res://assets/props/chest/chest.tscn" id="6_3q4lx"]
+[ext_resource type="PackedScene" path="res://assets/props/door/castle_gate.tscn" id="7_4m7ho"]
+[ext_resource type="Script" uid="uid://dfh0u8bdesyrq" path="res://components/scene_portal_component.gd" id="8_j4evd"]
+[ext_resource type="PackedScene" uid="uid://bnxw4web8woe0" path="res://scene/Level 2.tscn" id="9_1afep"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e7s2s"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_s2pad"]
+[sub_resource type="Sky" id="Sky_nh4id"]
 sky_material = SubResource("ProceduralSkyMaterial_e7s2s")
 
 [sub_resource type="Environment" id="Environment_2tnkg"]
 background_mode = 2
-sky = SubResource("Sky_s2pad")
+sky = SubResource("Sky_nh4id")
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(3.3266602, 4.5789795, 1.3896484)
 
 [node name="Level1" type="Node3D" unique_id=1612030300]
 script = ExtResource("1_s2pad")
@@ -87,3 +93,14 @@ data = {
 
 [node name="Chest" parent="." unique_id=1196007120 instance=ExtResource("6_3q4lx")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.334, -1, 73.27317)
+
+[node name="CastleGate" parent="." unique_id=510168630 instance=ExtResource("7_4m7ho")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 1.5084963, -1.1126435, 82.22472)
+
+[node name="Area3D" type="Area3D" parent="CastleGate" unique_id=24441488]
+script = ExtResource("8_j4evd")
+target_scene = ExtResource("9_1afep")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CastleGate/Area3D" unique_id=1968431415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022216797, 2.4017916, -0.1948204)
+shape = SubResource("BoxShape3D_g4v7s")
