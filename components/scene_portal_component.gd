@@ -1,9 +1,9 @@
 class_name ScenePortalComponent
 extends Area3D
-## Área que manda a todos los peers a otra escena cuando un jugador entra.
 
 @export var target_scene: PackedScene
 @export var require_all_players: bool = false
+@export var require_enemies_cleared: bool = true
 
 var _triggered: bool = false
 var _players_inside: Array[Node3D] = []
@@ -21,10 +21,22 @@ func _handle_body_entered(body: Node3D) -> void:
 	if not _players_inside.has(body):
 		_players_inside.append(body)
 
+	_try_trigger()
+
+
+func _physics_process(_delta: float) -> void:
+	if not _triggered and not _players_inside.is_empty():
+		_try_trigger()
+
+
+func _try_trigger() -> void:
 	if not multiplayer.is_server() or _triggered:
 		return
 
 	if require_all_players and _players_inside.size() < Game.instance.players.size():
+		return
+
+	if require_enemies_cleared and _enemies_remaining() > 0:
 		return
 
 	_triggered = true
@@ -37,4 +49,9 @@ func _handle_body_exited(body: Node3D) -> void:
 
 @rpc("reliable", "call_local")
 func _change_scene() -> void:
-	get_tree().change_scene_to_packed(target_scene)
+	get_tree().change_scene_to_packed.call_deferred(target_scene)
+
+
+func _enemies_remaining() -> int:
+	var level: Level = get_tree().current_scene as Level
+	return 0 if level == null else level.enemies_remaining()

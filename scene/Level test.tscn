@@ -64,10 +64,10 @@ data = {
 [node name="EnemySpawnPoints" type="Node3D" parent="." unique_id=439745689]
 
 [node name="Marker3D" type="Marker3D" parent="EnemySpawnPoints" unique_id=294047764]
-transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, 6, 0.42469287, 1.5206842)
+transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, 6, 0.42469287, 19.507824)
 
 [node name="Marker3D2" type="Marker3D" parent="EnemySpawnPoints" unique_id=1650464447]
-transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -6, 0.42469287, 1.5206842)
+transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -6, 0.42469287, 19.46304)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=2109032465]
 
@@ -104,3 +104,15 @@ target_scene = ExtResource("9_1afep")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CastleGate/Area3D" unique_id=1968431415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022216797, 2.4017916, -0.1948204)
 shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="EndScreen" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="EndScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1

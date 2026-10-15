@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bnxw4web8woe0"]
 
-[ext_resource type="Script" uid="uid://bdlvueh6n00lr" path="res://scene/level_test.gd" id="1_h7in3"]
-[ext_resource type="PackedScene" uid="uid://itg32ygcx6nc" path="res://players/player.tscn" id="2_7h12u"]
-[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="3_aksa2"]
+[ext_resource type="Script" uid="uid://bxidmvuo1o1e7" path="res://scene/level_2.gd" id="1_2p7nl"]
+[ext_resource type="PackedScene" uid="uid://itg32ygcx6nc" path="res://players/player.tscn" id="90_player"]
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="91_enemy"]
 [ext_resource type="MeshLibrary" uid="uid://ckdw5dhqvv7pj" path="res://assets/tilesets/brick_castle/brick_castle_library.tres" id="5_0o5p8"]
 [ext_resource type="PackedScene" path="res://assets/props/door/castle_gate.tscn" id="7_bmhx4"]
 [ext_resource type="Script" uid="uid://dfh0u8bdesyrq" path="res://components/scene_portal_component.gd" id="8_7h12u"]
@@ -24,9 +24,9 @@ glow_enabled = true
 size = Vector3(3.3266602, 4.5789795, 1.3896484)
 
 [node name="Level2" type="Node3D" unique_id=1612030300]
-script = ExtResource("1_h7in3")
-player_scene = ExtResource("2_7h12u")
-enemy_scene = ExtResource("3_aksa2")
+script = ExtResource("1_2p7nl")
+player_scene = ExtResource("90_player")
+enemy_scene = ExtResource("91_enemy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=836779784]
 environment = SubResource("Environment_2tnkg")
@@ -98,3 +98,15 @@ target_scene = ExtResource("8_aksa2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CastleGate/Area3D" unique_id=335158132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022216797, 2.4017916, -0.1948204)
 shape = SubResource("BoxShape3D_aksa2")
+
+[node name="EndScreen" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="EndScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
