@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" path="res://assets/props/door/castle_gate.tscn" id="7_bmhx4"]
 [ext_resource type="Script" uid="uid://dfh0u8bdesyrq" path="res://components/scene_portal_component.gd" id="8_7h12u"]
 [ext_resource type="PackedScene" uid="uid://iaekcuya67hy" path="res://scene/Level 3.tscn" id="8_aksa2"]
+[ext_resource type="Script" path="res://components/pressure_plate_group.gd" id="10_plgrp"]
+[ext_resource type="PackedScene" path="res://assets/props/pressure_plate/pressure_plate.tscn" id="11_plate"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e7s2s"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -94,10 +96,23 @@ transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 1.5084963, -1.1126435, 
 [node name="Area3D" type="Area3D" parent="CastleGate" unique_id=1675305475]
 script = ExtResource("8_7h12u")
 target_scene = ExtResource("8_aksa2")
+locked = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CastleGate/Area3D" unique_id=335158132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022216797, 2.4017916, -0.1948204)
 shape = SubResource("BoxShape3D_aksa2")
+
+[node name="PressurePlates" type="Node3D" parent="."]
+script = ExtResource("10_plgrp")
+
+[node name="PlateWest" parent="PressurePlates" instance=ExtResource("11_plate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, -1.25, 30)
+
+[node name="PlateEast" parent="PressurePlates" instance=ExtResource("11_plate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -1.25, 30)
+
+[node name="PlateSouth" parent="PressurePlates" instance=ExtResource("11_plate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -60)
 
 [node name="EndScreen" type="CanvasLayer" parent="."]
 
@@ -110,3 +125,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="solved" from="PressurePlates" to="CastleGate" method="open"]
+[connection signal="solved" from="PressurePlates" to="CastleGate/Area3D" method="unlock"]

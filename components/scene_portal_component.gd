@@ -4,6 +4,8 @@ extends Area3D
 @export var target_scene: PackedScene
 @export var require_all_players: bool = false
 @export var require_enemies_cleared: bool = true
+## While locked the portal never triggers; call unlock() on every peer (e.g. from a puzzle's signal).
+@export var locked: bool = false
 
 var _triggered: bool = false
 var _players_inside: Array[Node3D] = []
@@ -30,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _try_trigger() -> void:
-	if not multiplayer.is_server() or _triggered:
+	if not multiplayer.is_server() or _triggered or locked:
 		return
 
 	if require_all_players and _players_inside.size() < Game.instance.players.size():
@@ -45,6 +47,10 @@ func _try_trigger() -> void:
 
 func _handle_body_exited(body: Node3D) -> void:
 	_players_inside.erase(body)
+
+
+func unlock() -> void:
+	locked = false
 
 
 @rpc("reliable", "call_local")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bxd0b6kpm6xgl" path="res://assets/props/door/door.fbx" id="1_door"]
+[ext_resource type="Script" path="res://assets/props/door/castle_gate.gd" id="2_gate"]
 
 [node name="CastleGate" type="Node3D"]
+script = ExtResource("2_gate")
 
 [node name="DoorLeft" parent="." instance=ExtResource("1_door")]
 transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, -1.186, 0, 0)
