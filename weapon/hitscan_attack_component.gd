@@ -14,7 +14,7 @@ func _attack(direction: Vector3) -> void:
 		return
 	var from: Vector3 = global_position
 	var to: Vector3 = from + direction.normalized() * max_distance
-	var query := PhysicsRayQueryParameters3D.create(from, to, hit_mask)
+	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(from, to, hit_mask)
 	query.collide_with_areas = true
 	var hit: Dictionary = get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():

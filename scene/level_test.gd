@@ -24,6 +24,11 @@ func _ready() -> void:
 
 	await get_tree().create_timer(0.5).timeout
 	for player_data: Statics.PlayerData in Game.instance.players:
+		# Fixed weapon per player by join order: P1 -> 0 (sword), P2 -> 1
+		# (spellgun), P3 -> 2 (stave), then wraps. Travels in the spawn data so
+		# every peer equips the same one (keeps node paths identical across
+		# peers).
+		player_data.weapon_index = player_data.index % Player.WEAPON_SCENES.size()
 		player_spawner.spawn(player_data.to_dict())
 
 	for i: int in enemy_spawn_points.get_child_count():
@@ -39,6 +44,9 @@ func _spawn_player(data: Dictionary) -> Node:
 	var player_inst: Player = player_scene.instantiate()
 	player_inst.name = str(player_data.id)
 	player_inst.set_multiplayer_authority(player_data.id)
+	# Runs before the spawner adds it to the tree (i.e. before _ready), so the
+	# weapon is chosen in time. Spawn data is identical on every peer.
+	player_inst.weapon_index = player_data.weapon_index
 	var spawn_point: Node3D = spawn_points.get_child(player_data.index)
 	player_inst.position = spawn_point.global_position
 

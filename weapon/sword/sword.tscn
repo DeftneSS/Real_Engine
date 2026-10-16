@@ -3,13 +3,58 @@
 [ext_resource type="Script" uid="uid://db7x4y67ebr2g" path="res://weapon/weapon.gd" id="1_g0263"]
 [ext_resource type="Script" uid="uid://c0f5dc720ro6y" path="res://weapon/melee_attack_component.gd" id="2_dvccu"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_reach"]
+radius = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_0tkti"]
+
+[sub_resource type="Animation" id="Animation_swing"]
+resource_name = "swing"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwingPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.28, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.7, 0, -0.5), Vector3(-1.3, 0, 0.6), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swing"]
+_data = {
+&"swing": SubResource("Animation_swing")
+}
+
 [node name="Sword" type="Node3D" unique_id=1392134256 node_paths=PackedStringArray("attack_components")]
 script = ExtResource("1_g0263")
 weapon_name = "Sword"
 attack_components = [NodePath("MeleeAttackComponent")]
 metadata/_custom_type_script = "uid://db7x4y67ebr2g"
 
-[node name="MeleeAttackComponent" type="Node3D" parent="." unique_id=472654113]
+[node name="MeleeAttackComponent" type="Node3D" parent="." unique_id=472654113 node_paths=PackedStringArray("hitbox", "animation_player")]
 script = ExtResource("2_dvccu")
+hitbox = NodePath("../Hitbox")
 damage = 10
+automatic = true
+animation_player = NodePath("../AnimationPlayer")
+attack_animation = &"swing"
 metadata/_custom_type_script = "uid://c0f5dc720ro6y"
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=1220829024]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1359744613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_reach")
+
+[node name="SwingPivot" type="Node3D" parent="." unique_id=490721840]
+
+[node name="Blade" type="MeshInstance3D" parent="SwingPivot" unique_id=2013985122]
+transform = Transform3D(0.07071068, 0, 0.07071068, 0, 2, 0, -0.07071068, 0, 0.07071068, 0, 0.7741153, 0)
+mesh = SubResource("BoxMesh_0tkti")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1547275731]
+libraries/ = SubResource("AnimationLibrary_swing")

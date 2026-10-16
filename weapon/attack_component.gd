@@ -12,6 +12,12 @@ extends Node3D
 ## rate; when false, only the press edge fires (one shot per press).
 @export var automatic: bool = true
 
+## Cosmetic swing/recoil clip, played on every peer when this component fires.
+## Never affects damage (see MeleeAttackComponent); null = no animation.
+@export var animation_player: AnimationPlayer
+## Name of the clip in `animation_player`; empty = nothing plays.
+@export var attack_animation: StringName = &""
+
 ## Peer id of the player holding the owning Weapon (forwarded by Weapon).
 var wielder_id: int = 1
 
@@ -36,6 +42,7 @@ func attack(direction: Vector3, just_pressed: bool = true) -> void:
 	if not _can_attack:
 		return
 	_start_cooldown()
+	_play_attack_animation.rpc()
 	if multiplayer.is_server():
 		_attack(direction)
 	else:
@@ -53,6 +60,26 @@ func _attack_request(direction: Vector3) -> void:
 		return
 	_start_cooldown()
 	_attack(direction)
+
+
+## Cosmetic only: the owning peer broadcasts so every peer sees the swing.
+## any_peer + call_local because the owning node's multiplayer authority is
+## the server, but a client owner is who actually fires (same reason as
+## _attack_request); the sender check stops anyone faking another player's
+## swing. Damage stays server-authoritative and never depends on this clip.
+@rpc("any_peer", "call_local", "reliable")
+func _play_attack_animation() -> void:
+	var sender: int = multiplayer.get_remote_sender_id()
+	if sender != 0 and sender != wielder_id:
+		return
+	if animation_player == null or attack_animation == &"":
+		return
+	# play() does not restart a clip that is already mid-play, so an attack
+	# landing before the previous swing finished would not visibly re-trigger.
+	# Stop first so every committed attack restarts the swing.
+	if animation_player.is_playing() and animation_player.current_animation == attack_animation:
+		animation_player.stop()
+	animation_player.play(attack_animation)
 
 
 func _start_cooldown() -> void:

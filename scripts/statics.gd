@@ -34,6 +34,9 @@ class PlayerData:
 	var index: int = -1
 	var role: Role
 	var vote: bool = false
+	# Index into Player.WEAPON_SCENES; assigned by the server so every peer
+	# equips the same weapon (and therefore the same node paths for RPCs).
+	var weapon_index: int = 0
 	
 	func _init(new_id: int, new_name: String, new_index: int = -1, new_role: Role = Role.NONE) -> void:
 		id = new_id
@@ -50,12 +53,14 @@ class PlayerData:
 			"name": name,
 			"index": index,
 			"role": role,
-			"vote": vote
+			"vote": vote,
+			"weapon_index": weapon_index
 		}
 	
 	static func from_dict(data: Dictionary) -> PlayerData:
 		var player: PlayerData = PlayerData.new(data.id, data.name, data.index, data.role)
 		player.vote = data.vote
+		player.weapon_index = data.get("weapon_index", 0)
 		return player
 	
 	func update(player_data: PlayerData) -> void:

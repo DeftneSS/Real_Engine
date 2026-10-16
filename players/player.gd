@@ -17,7 +17,15 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
-@onready var initial_weapon: PackedScene = preload("res://weapon/spellgun/spellgun.tscn")
+## Every weapon a player can be assigned. The server assigns one per player
+## (fixed by join order, see Level) and it replicates through spawn data, so
+## all peers build the same scene at the same node path (required for the
+## animation RPC to route correctly).
+const WEAPON_SCENES: Array[PackedScene] = [
+	preload("res://weapon/sword/sword.tscn"),
+	preload("res://weapon/spellgun/spellgun.tscn"),
+	preload("res://weapon/stave/basic_stave/basic_stave.tscn"),
+]
 
 @export var move_speed: float = 5
 @export var jump_speed: float = 7
@@ -34,6 +42,8 @@ extends CharacterBody3D
 @export var camera_max_pitch: float = 30
 
 var _weapon: Weapon
+## Index into WEAPON_SCENES; set by Level._spawn_player before _ready().
+var weapon_index: int = 0
 ## Previous frame's held state of the attack input, for press-edge detection.
 var _attack_held: bool = false
 
@@ -48,7 +58,7 @@ func _ready() -> void:
 		sync_timer.start()
 	add_to_group("players")
 	
-	_weapon = initial_weapon.instantiate()
+	_weapon = WEAPON_SCENES[weapon_index].instantiate()
 	_weapon.wielder_id = player_data.id
 	weapon_socket.add_child(_weapon)
 
