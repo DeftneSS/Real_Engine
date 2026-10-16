@@ -8,6 +8,9 @@ extends Node3D
 
 @export var damage: int = 1
 @export var cooldown: float = 1
+## When true (default), holding the attack input keeps firing at `cooldown`
+## rate; when false, only the press edge fires (one shot per press).
+@export var automatic: bool = true
 
 ## Peer id of the player holding the owning Weapon (forwarded by Weapon).
 var wielder_id: int = 1
@@ -24,7 +27,12 @@ func _ready() -> void:
 	add_child(_cooldown_timer)
 
 
-func attack(direction: Vector3) -> void:
+## `just_pressed` marks the press edge of the attack input; semi-automatic
+## components (`automatic = false`) only fire on that edge, while automatic
+## ones fire on every call, relying on `cooldown` to set the rate.
+func attack(direction: Vector3, just_pressed: bool = true) -> void:
+	if not automatic and not just_pressed:
+		return
 	if not _can_attack:
 		return
 	_start_cooldown()

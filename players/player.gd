@@ -17,7 +17,7 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
-@onready var basic_stave_scene: PackedScene = preload("res://weapon/stave/basic_stave/basic_stave.tscn")
+@onready var initial_weapon: PackedScene = preload("res://weapon/spellgun/spellgun.tscn")
 
 @export var move_speed: float = 5
 @export var jump_speed: float = 7
@@ -34,6 +34,8 @@ extends CharacterBody3D
 @export var camera_max_pitch: float = 30
 
 var _weapon: Weapon
+## Previous frame's held state of the attack input, for press-edge detection.
+var _attack_held: bool = false
 
 func _ready() -> void:
 	sync_timer.timeout.connect(_on_sync_timeout)
@@ -46,7 +48,7 @@ func _ready() -> void:
 		sync_timer.start()
 	add_to_group("players")
 	
-	_weapon = basic_stave_scene.instantiate()
+	_weapon = initial_weapon.instantiate()
 	_weapon.wielder_id = player_data.id
 	weapon_socket.add_child(_weapon)
 
@@ -127,13 +129,18 @@ func _physics_process(delta: float) -> void:
 			dash_timer.start()
 			dash_cooldown_timer.start()
 	
+	# Edge detection runs every frame (also while dashing) so a press held
+	# through a dash doesn't produce a phantom shot when it ends.
+	var attack_held: bool = input_synchronizer.attack
+	var attack_pressed: bool = attack_held and not _attack_held
+	_attack_held = attack_held
+
 	if is_dashing:
 		velocity.x = dash_direction.x * dash_speed
 		velocity.z = dash_direction.z * dash_speed
 	else:
-		if input_synchronizer.attack:
-			input_synchronizer.attack = false
-			attack()
+		if attack_held:
+			attack(attack_pressed)
 		
 		var target: Vector2 = Vector2(direction.x, direction.z) * move_speed
 		var current_speed: Vector2 = Vector2(velocity.x, velocity.z)
@@ -148,12 +155,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 
-func attack() -> void:
+func attack(just_pressed: bool = true) -> void:
 	# Only the owner knows the real camera aim; the weapon replicates the result.
 	if not is_multiplayer_authority():
 		return
 	var direction: Vector3 = -camera_3d.global_transform.basis.z
-	_weapon.attack(direction)
+	_weapon.attack(direction, just_pressed)
 
 func _on_sync_timeout() -> void:
 	_sync.rpc(global_position, velocity)

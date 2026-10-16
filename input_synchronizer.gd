@@ -19,8 +19,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		broadcast_dash.rpc()
 	
-	if Input.is_action_just_pressed("attack"):
-		broadcast_attack.rpc()
+	# Held state (not a one-shot): components with `automatic` keep firing
+	# while the button is down; the owner also uses it to detect the press edge.
+	attack = Input.is_action_pressed("attack")
 	
 
 @rpc("call_local")
@@ -30,7 +31,3 @@ func broadcast_jump() -> void:
 @rpc("call_local")
 func broadcast_dash() -> void:
 	dash = true
-
-@rpc("call_local")
-func broadcast_attack() -> void:
-	attack = true

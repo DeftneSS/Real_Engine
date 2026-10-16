@@ -19,9 +19,9 @@ var wielder_id: int = 1:
 			skill_component.wielder_id = value
 
 
-func attack(direction: Vector3) -> void:
+func attack(direction: Vector3, just_pressed: bool = true) -> void:
 	for attack_component: AttackComponent in attack_components:
-		attack_component.attack(direction)
+		attack_component.attack(direction, just_pressed)
 
 
 func skill(direction: Vector3) -> void:
