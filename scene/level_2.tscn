@@ -6,8 +6,8 @@
 [ext_resource type="MeshLibrary" uid="uid://ckdw5dhqvv7pj" path="res://assets/tilesets/brick_castle/brick_castle_library.tres" id="5_0o5p8"]
 [ext_resource type="PackedScene" path="res://assets/props/door/castle_gate.tscn" id="7_bmhx4"]
 [ext_resource type="Script" uid="uid://dfh0u8bdesyrq" path="res://components/scene_portal_component.gd" id="8_7h12u"]
-[ext_resource type="PackedScene" uid="uid://iaekcuya67hy" path="res://scene/Level 3.tscn" id="8_aksa2"]
-[ext_resource type="Script" path="res://components/pressure_plate_group.gd" id="10_plgrp"]
+[ext_resource type="PackedScene" uid="uid://iaekcuya67hy" path="res://scene/level_3.tscn" id="8_aksa2"]
+[ext_resource type="Script" uid="uid://by4f3l2bt6rk3" path="res://components/pressure_plate_group.gd" id="10_plgrp"]
 [ext_resource type="PackedScene" path="res://assets/props/pressure_plate/pressure_plate.tscn" id="11_plate"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e7s2s"]
