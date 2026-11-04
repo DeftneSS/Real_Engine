@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bhc6b4j56mnij"]
+
+[resource]
+resource_name = "light brown"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.6509804, 0.40000004, 0.19607845, 1)
+emission_enabled = true

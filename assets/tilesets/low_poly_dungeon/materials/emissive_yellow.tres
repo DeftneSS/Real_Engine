@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b7ldus1mied4y"]
+
+[resource]
+resource_name = "emissive yellow"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.992157, 0.18823533, 1)
+emission_enabled = true
+emission = Color(1, 0.992157, 0.18823533, 1)

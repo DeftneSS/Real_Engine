@@ -1,0 +1,841 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cb8icg3tkg3hn"
+path="res://.godot/imported/low-poly-dungeon.fbx-6e6083b17b44a6bc9060ce2a94e99ce7.scn"
+
+[deps]
+
+source_file="res://assets/tilesets/low_poly_dungeon/low-poly-dungeon.fbx"
+dest_files=["res://.godot/imported/low-poly-dungeon.fbx-6e6083b17b44a6bc9060ce2a94e99ce7.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Coin_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:Key_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_015": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_016": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_017": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_018": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_019": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_020": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_021": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_022": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_023": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_024": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:barrel_025": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:bars_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:bars_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:bars_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:bars_013": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:blade trap": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:blade trap base": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:bone": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall with bars": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall with bars_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall with door": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall with door_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall without door": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall without door_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall_004": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:brick wall_005": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:bricks": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:bricks_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:candle": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:candle_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:candle_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:candle_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:chest bottom": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:chest top": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:chest's gold": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:damaged railing left": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:damaged railing right": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:debris": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:door arc": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:door arc_037": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:door arc_038": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:door_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:door_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:door_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:door_013": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_004": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_005": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_006": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_007": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_008": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_011": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_012": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_013": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_014": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_015": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_016": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_017": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_018": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_029": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_030": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_031": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_032": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_033": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_034": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_035": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_036": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_037": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_038": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_039": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_041": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_043": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_044": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_045": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_046": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_047": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_048": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_049": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_050": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_051": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_052": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_063": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_064": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_065": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_066": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_067": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_070": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_072": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_074": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_092": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_107": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_331": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_332": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_335": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_336": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_338": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_341": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_349": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_364": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_365": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_366": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_367": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_368": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_369": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_370": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_371": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_372": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_373": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_374": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_375": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_376": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_377": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_378": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_379": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_380": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_381": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_382": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_383": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_384": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_385": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_386": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_387": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_388": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_389": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_390": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:floor_391": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:lever": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:lever base": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:pillar": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:railing": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:rock": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:rock_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:rock_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:rock_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:ruined wall": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:saw blade": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:saw blade floor": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:saw blade floor corner": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:skull": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:smooth wall": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:smooth wall_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:smooth wall_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:smooth wall_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:smooth wall_004": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:spikes": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:spikes floor": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:stairs": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:stairs handhail big": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:stairs handhail small": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:stairs_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:stairs_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:stairs_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:tile": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:tile_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:tile_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:tile_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:tile_004": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:tile_005": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:torch": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:torch_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:window": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:window_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:window_002": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_001": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_003": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_004": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_005": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_006": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_007": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_008": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_009": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_010": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_011": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_012": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_013": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_014": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_015": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_016": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_017": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_018": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_019": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_020": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_021": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_022": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_023": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:wooden box_024": {
+"generate/physics": true,
+"physics/shape_type": 0
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

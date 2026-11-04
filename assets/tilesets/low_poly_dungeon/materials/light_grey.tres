@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dx71jeluqbeql"]
+
+[resource]
+resource_name = "light grey"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.63137263, 0.68627465, 0.78431386, 1)
+emission_enabled = true
