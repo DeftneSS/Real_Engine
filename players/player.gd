@@ -75,6 +75,14 @@ func _create_hud() -> void:
 	add_child(hud_layer)
 	health_component.health_changed.connect(hearts.set_health)
 	hearts.set_health(health_component.current_health, health_component.max_health)
+	var crosshair: Label = Label.new()
+	crosshair.text = "+"
+	crosshair.add_theme_font_size_override("font_size", 28)
+	crosshair.set_anchors_preset(Control.PRESET_FULL_RECT)
+	crosshair.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	crosshair.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hud_layer.add_child(crosshair)
 
 
 # Emitted on every peer (health is broadcast by the server).

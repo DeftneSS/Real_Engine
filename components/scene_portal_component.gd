@@ -4,7 +4,6 @@ extends Area3D
 @export var target_scene: PackedScene
 @export var require_all_players: bool = false
 @export var require_enemies_cleared: bool = true
-## While locked the portal never triggers; call unlock() on every peer (e.g. from a puzzle's signal).
 @export var locked: bool = false
 
 var _triggered: bool = false
